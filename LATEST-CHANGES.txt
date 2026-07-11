@@ -1,0 +1,3 @@
+Latest finishing changes:
+- Removed the redundant third checkmark/contact point.
+- Removed the explanatory sentence above the before-and-after pairs.
