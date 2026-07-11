@@ -576,9 +576,9 @@
     .why-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1px;
+      gap: 0;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
       border-radius: 26px;
       background: rgba(255,255,255,.10);
     }
@@ -586,8 +586,11 @@
     .why-card {
       min-height: 250px;
       padding: 28px;
+      border-left: 1px solid rgba(255,255,255,.20);
       background: rgba(23,51,35,.88);
     }
+
+    .why-card:first-child { border-left: 0; }
 
     .why-card svg {
       width: 34px;
@@ -871,10 +874,14 @@
     }
 
     .site-credit img {
-      width: 82px;
-      height: 82px;
-      border-radius: 13px;
+      width: 170px;
+      height: auto;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 14px;
       object-fit: contain;
+      background: rgba(255,253,248,.96);
+      box-shadow: 0 12px 28px rgba(0,0,0,.18);
     }
 
     .mobile-cta {
@@ -903,6 +910,12 @@
       .hero-grid { gap: 38px; min-height: unset; }
       .hero-copy { padding-top: 20px; }
       .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .why-card {
+        border-left: 0;
+        border-top: 1px solid rgba(255,255,255,.20);
+      }
+      .why-card:nth-child(even) { border-left: 1px solid rgba(255,255,255,.20); }
+      .why-card:nth-child(-n+2) { border-top: 0; }
       .why-heading { grid-template-columns: 1fr; gap: 24px; }
       .why-heading h2 { max-width: 840px; }
       .section-heading { align-items: start; flex-direction: column; }
@@ -962,6 +975,12 @@
       .form-grid,
       .gallery-grid,
       .comparison-grid { grid-template-columns: 1fr; }
+      .why-card,
+      .why-card:nth-child(even) {
+        border-left: 0;
+        border-top: 1px solid rgba(255,255,255,.20);
+      }
+      .why-card:first-child { border-top: 0; }
       .project-card.featured { display: block; }
       .project-card.featured img { min-height: 280px; }
       .project-card.featured .project-copy { padding: 28px 24px; }
@@ -1002,7 +1021,7 @@
       <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
         <a href="#services">Services</a>
         <a href="#projects">Projects</a>
-        <a href="#about">Why Proscapes</a>
+        <a href="#approach">Why Proscapes</a>
         <a href="#service-area">Service Area</a>
         <a href="#contact" class="nav-cta">Free Estimate</a>
       </nav>
@@ -1143,7 +1162,7 @@
       </div>
     </section>
 
-    <section class="section why-section">
+    <section class="section why-section" id="approach">
       <div class="wrap">
         <div class="why-heading">
           <div>
@@ -1266,7 +1285,7 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" id="footer">
     <div class="wrap footer-row">
       <div class="footer-left">
         <div class="footer-brand">
@@ -1282,8 +1301,7 @@
       <div class="footer-copy">© <span id="year">2026</span> Lexington Proscapes Landscaping. All rights reserved.</div>
 
       <a class="site-credit" href="https://strataworks.tech" target="_blank" rel="noopener noreferrer" aria-label="Website by StrataWorks Tech">
-        <span>Website by StrataWorks</span>
-        <img src="assets/strataworks-logo.png" alt="StrataWorks logo" />
+        <img src="assets/strataworks-logo.png" alt="Website by StrataWorks — Precision. Performance. Partnership." />
       </a>
     </div>
   </footer>
