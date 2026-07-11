@@ -1,22 +1,25 @@
 # Lexington Proscapes website
 
-Final GitHub Pages-ready website package.
+Complete GitHub Pages-ready website package.
 
-## Updates in this version
+## Photo update
 
-- Refined the “Proscapes approach” section for cleaner desktop and mobile spacing
-- Added and optimized recent project photography
-- Added a before-and-after project comparison
-- Expanded the service area to Lexington and surrounding Midlands communities
-- Removed internal/technical form wording
-- Kept direct email contact at `info@lexingtonproscapes.com`
-- Preserved the StrataWorks footer credit and logo
+The project section includes two separately labeled before-and-after pairs:
+
+1. `assets/project-01-before.jpg` → `assets/project-01-after.jpg`
+   - White brick home landscape-bed refresh
+2. `assets/project-02-before.jpg` → `assets/project-02-after.jpg`
+   - Two-story home front-bed refresh
+
+The four photos received only restrained global corrections: resizing, exposure, contrast, color, and light sharpening. No landscaping, structures, people, or objects were generated, removed, or replaced.
 
 ## Upload structure
 
-Upload these items directly to the root of the GitHub repository:
+Upload the contents of this folder directly to the root of the `LexingtonProscape` repository:
 
 - `index.html`
 - `.nojekyll`
 - `README.md`
 - `assets/`
+
+GitHub Pages should publish from the `main` branch and repository root.

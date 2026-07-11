@@ -1,0 +1,19 @@
+LEXINGTON PROSCAPES — BEFORE/AFTER PHOTO MAP
+
+PROJECT 1 — WHITE BRICK HOME BED REFRESH
+Before website file: assets/project-01-before.jpg
+Original upload: image0.jpeg
+After website file: assets/project-01-after.jpg
+Original upload: image2(1).jpeg
+
+PROJECT 2 — TWO-STORY HOME CURB-APPEAL REFRESH
+Before website file: assets/project-02-before.jpg
+Original upload: image17.jpeg
+After website file: assets/project-02-after.jpg
+Original upload: image18.jpeg
+
+PHOTO EDITING LIMITS
+Edits were restricted to resizing, subtle exposure and contrast correction,
+subtle color correction, and light sharpening. No landscaping, buildings,
+people, equipment, or other objects were generated, removed, replaced, or
+relocated.
