@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lexington Proscapes | Landscaping & Hardscapes in Lexington, SC</title>
-  <meta name="description" content="Lexington Proscapes provides landscaping, hardscape projects, and dependable property maintenance across Lexington, Oak Grove, and West Columbia, South Carolina." />
+  <meta name="description" content="Lexington Proscapes provides landscaping, hardscape projects, bed refreshes, and dependable property maintenance throughout Lexington and surrounding Midlands communities." />
   <meta name="theme-color" content="#244b31" />
   <meta property="og:title" content="Lexington Proscapes Landscaping" />
   <meta property="og:description" content="Hardscapes, property maintenance, and outdoor upgrades for Lexington and West Columbia, SC." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/project-front-yard.jpg" />
+  <meta property="og:image" content="assets/hero-landscape.jpg" />
   <link rel="icon" href="assets/lexington-proscapes-logo.jpg" />
 
   <style>
@@ -61,6 +61,7 @@
     button { cursor: pointer; }
     .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
     .section { padding: 96px 0; }
+    section[id] { scroll-margin-top: 100px; }
     .section-tight { padding: 62px 0; }
 
     .site-header {
@@ -439,18 +440,37 @@
       gap: 22px;
     }
 
-    .project-card {
+    .project-card,
+    .comparison-card {
       overflow: hidden;
       border: 1px solid rgba(36,75,49,.13);
       border-radius: 28px;
-      background: rgba(255,253,248,.85);
+      background: rgba(255,253,248,.88);
       box-shadow: 0 20px 48px rgba(32,43,39,.08);
     }
 
     .project-card img {
       width: 100%;
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 16 / 10;
       object-fit: cover;
+    }
+
+    .project-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      min-height: 430px;
+    }
+
+    .project-card.featured img {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+
+    .project-card.featured .project-copy {
+      display: grid;
+      align-content: center;
+      padding: 42px;
     }
 
     .project-copy { padding: 24px; }
@@ -463,12 +483,95 @@
     }
     .project-copy p { margin-bottom: 0; color: var(--muted); }
 
+    .comparison-card {
+      grid-column: 1 / -1;
+      padding: 24px;
+    }
+
+    .comparison-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .comparison-heading h3 {
+      margin-bottom: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--green-deep);
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      line-height: 1;
+    }
+
+    .comparison-heading p {
+      max-width: 520px;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .comparison-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 19px;
+      background: #d8d4c9;
+    }
+
+    .comparison-image img {
+      width: 100%;
+      aspect-ratio: 128 / 41;
+      object-fit: cover;
+    }
+
+    .comparison-label {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(23,51,35,.88);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+
     .why-section { background: var(--green-dark); color: white; }
     .why-section h2,
     .why-section h3 { color: white; }
     .why-section .eyebrow { color: #d8e8d3; }
     .why-section .eyebrow::before { background: #aec99f; }
-    .why-section .section-heading p { color: #c6d6cd; }
+
+    .why-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1.22fr) minmax(300px, .78fr);
+      align-items: end;
+      gap: 72px;
+      margin-bottom: 42px;
+    }
+
+    .why-heading h2 {
+      max-width: 760px;
+      margin-bottom: 0;
+      font-size: clamp(3.2rem, 5.4vw, 5.6rem);
+      line-height: .94;
+    }
+
+    .why-heading p {
+      max-width: 460px;
+      margin-bottom: 5px;
+      color: #c6d6cd;
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
 
     .why-grid {
       display: grid;
@@ -682,11 +785,7 @@
     .field select:focus,
     .field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 4px rgba(79,127,67,.10); }
 
-    .form-note {
-      margin: 14px 0 20px;
-      color: var(--muted);
-      font-size: .82rem;
-    }
+    .estimate-form .button { margin-top: 20px; }
 
     .form-status {
       display: none;
@@ -772,7 +871,11 @@
       .hero-grid { gap: 38px; min-height: unset; }
       .hero-copy { padding-top: 20px; }
       .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .why-heading { grid-template-columns: 1fr; gap: 24px; }
+      .why-heading h2 { max-width: 840px; }
       .section-heading { align-items: start; flex-direction: column; }
+      .project-card.featured { grid-template-columns: 1fr; }
+      .project-card.featured img { min-height: 360px; }
       .photo-secondary { left: 20px; bottom: 20px; width: min(42%, 220px); }
     }
 
@@ -825,7 +928,13 @@
       .services-grid,
       .why-grid,
       .form-grid,
-      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-grid,
+      .comparison-grid { grid-template-columns: 1fr; }
+      .project-card.featured { display: block; }
+      .project-card.featured img { min-height: 280px; }
+      .project-card.featured .project-copy { padding: 28px 24px; }
+      .comparison-card { padding: 16px; }
+      .comparison-heading { align-items: start; flex-direction: column; }
       .service-card { min-height: 350px; padding: 28px; }
       .service-number { margin-bottom: 62px; }
       .field.full { grid-column: auto; }
@@ -871,7 +980,7 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Lexington • Oak Grove • West Columbia</p>
+          <p class="eyebrow">Lexington, SC & surrounding areas</p>
           <h1>Outdoor spaces, <em>built to last.</em></h1>
           <p class="hero-lead">
             Lexington Proscapes delivers dependable property maintenance and clean, thoughtfully built hardscape projects for homes and small businesses across the Lexington area.
@@ -890,11 +999,11 @@
 
         <div class="hero-visual">
           <div class="photo-stage">
-            <img class="photo-primary" src="assets/project-front-yard.jpg" alt="Fresh landscaping in front of a home completed by Lexington Proscapes" />
-            <img class="photo-secondary" src="assets/project-bed-install.jpg" alt="Mulch and bed refresh project by Lexington Proscapes" />
+            <img class="photo-primary" src="assets/hero-landscape.jpg" alt="Professionally refreshed landscape beds around a Lexington-area home" fetchpriority="high" decoding="async" />
+            <img class="photo-secondary" src="assets/project-bed-install.jpg" decoding="async" alt="Fresh mulch, edging, and planting work by Lexington Proscapes" />
             <div class="floating-note">
-              <strong>Real work. Real properties.</strong>
-              <span>These featured photos now give the site instant credibility and help show the difference clean landscaping makes.</span>
+              <strong>Local work, finished with care.</strong>
+              <span>Landscape maintenance and outdoor improvements completed for homeowners across the Midlands.</span>
             </div>
           </div>
         </div>
@@ -950,25 +1059,51 @@
         <div class="section-heading">
           <div>
             <p class="eyebrow">Featured work</p>
-            <h2>Recent project photos.</h2>
+            <h2>Recent projects.</h2>
           </div>
-          <p>Take a look at a few recent landscaping and property-maintenance projects completed around the Lexington area.</p>
+          <p>Landscape bed refreshes, detailed maintenance, and outdoor improvements completed for local homeowners.</p>
         </div>
 
         <div class="gallery-grid">
-          <article class="project-card">
-            <img src="assets/project-bed-install.jpg" alt="Curved bed install with fresh dark mulch and new plantings" />
+          <article class="project-card featured">
+            <img src="assets/hero-landscape.jpg" decoding="async" alt="Freshly edged and mulched landscape beds around a brick home" />
             <div class="project-copy">
-              <h3>Mulch & bed refresh</h3>
-              <p>Fresh dark mulch, clean edging, and new plant placement create a sharper, more intentional front-yard presentation.</p>
+              <p class="eyebrow">Property refresh</p>
+              <h3>Clean lines across the entire landscape.</h3>
+              <p>Defined bed edges, fresh dark mulch, and detailed shrub work create a consistent, polished finish from one end of the property to the other.</p>
             </div>
           </article>
 
           <article class="project-card">
-            <img src="assets/project-front-yard.jpg" alt="Finished front yard landscape with trimmed shrubs and pine straw" />
+            <img src="assets/project-bed-install.jpg" decoding="async" alt="Curved bed installation with fresh dark mulch and new plantings" />
+            <div class="project-copy">
+              <h3>Mulch & bed refresh</h3>
+              <p>Fresh mulch, clean edging, and carefully placed plants give this front yard a sharper, more intentional presentation.</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="assets/project-front-yard.jpg" decoding="async" alt="Finished front yard landscape with trimmed shrubs and refreshed beds" />
             <div class="project-copy">
               <h3>Front yard cleanup</h3>
-              <p>Trimmed shrubs, refreshed beds, and a clean finish give the property a polished curb-appeal upgrade.</p>
+              <p>Trimmed shrubs and refreshed beds deliver an immediate curb-appeal upgrade without overworking the existing landscape.</p>
+            </div>
+          </article>
+
+          <article class="comparison-card">
+            <div class="comparison-heading">
+              <h3>A visible before-and-after difference.</h3>
+              <p>A tired pine-straw bed was reshaped, edged, and finished with dark mulch for a cleaner look that better frames the home.</p>
+            </div>
+            <div class="comparison-grid">
+              <div class="comparison-image">
+                <img src="assets/project-before.jpg" decoding="async" alt="Landscape bed before the Lexington Proscapes refresh" />
+                <span class="comparison-label">Before</span>
+              </div>
+              <div class="comparison-image">
+                <img src="assets/project-after.jpg" decoding="async" alt="Landscape bed after fresh edging and dark mulch" />
+                <span class="comparison-label">After</span>
+              </div>
             </div>
           </article>
         </div>
@@ -977,12 +1112,12 @@
 
     <section class="section why-section">
       <div class="wrap">
-        <div class="section-heading">
+        <div class="why-heading">
           <div>
             <p class="eyebrow">The Proscapes approach</p>
-            <h2>Professional without overcomplicating it.</h2>
+            <h2>Professional service, without the runaround.</h2>
           </div>
-          <p>Good landscaping starts with showing up, communicating clearly, doing the work carefully, and leaving the property better than it was found.</p>
+          <p>Good landscaping should be straightforward: communicate clearly, arrive prepared, complete the work carefully, and leave the property looking better than it was found.</p>
         </div>
 
         <div class="why-grid">
@@ -1013,9 +1148,11 @@
     <section class="section" id="service-area">
       <div class="wrap area-layout">
         <div class="area-card">
-          <h3>Serving the Lexington area</h3>
-          <p>Primary service coverage includes Lexington, Oak Grove, and West Columbia, with nearby projects considered by request.</p>
-          <div class="area-tags"><span>Lexington</span><span>Oak Grove</span><span>West Columbia</span></div>
+          <h3>Lexington and surrounding areas</h3>
+          <p>Lexington Proscapes serves homeowners and small businesses throughout Lexington County and the surrounding Midlands. Projects outside the primary service area are considered based on scope and scheduling.</p>
+          <div class="area-tags">
+            <span>Lexington</span><span>West Columbia</span><span>Cayce</span><span>Columbia</span><span>Irmo</span><span>Gilbert</span><span>Gaston</span><span>Oak Grove</span><span>Red Bank</span>
+          </div>
         </div>
 
         <div>
@@ -1036,12 +1173,12 @@
         <div class="contact-copy">
           <p class="eyebrow">Start a project</p>
           <h2>Let’s take a look at your property.</h2>
-          <p>Tell us what you are planning and where the property is located. You can contact Lexington Proscapes directly by email or use the form to prepare a ready-to-send estimate request.</p>
+          <p>Tell us what you are planning and where the property is located. Lexington Proscapes will follow up to discuss the project and schedule a walkthrough when needed.</p>
 
           <div class="contact-points">
             <div class="contact-point"><span>✓</span> Free project estimate</div>
             <div class="contact-point"><span>✓</span> Residential and small business properties</div>
-            <div class="contact-point"><span>✓</span> Lexington and West Columbia focus</div>
+            <div class="contact-point"><span>✓</span> Lexington and surrounding Midlands communities</div>
             <div class="contact-point"><span>✉</span> <a href="mailto:info@lexingtonproscapes.com">info@lexingtonproscapes.com</a></div>
           </div>
 
@@ -1089,9 +1226,7 @@
               <textarea id="message" name="message" required></textarea>
             </div>
           </div>
-
-          <p class="form-note">This updated version prepares a direct email request to <strong>info@lexingtonproscapes.com</strong> and also copies the details to the clipboard for backup.</p>
-          <button class="button primary" type="submit">Prepare Email Request</button>
+          <button class="button primary" type="submit">Email Estimate Request</button>
           <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
         </form>
       </div>
@@ -1157,9 +1292,9 @@
 
       try {
         await navigator.clipboard.writeText(request);
-        formStatus.textContent = 'Your request was copied and your email app is opening now.';
+        formStatus.textContent = 'Your email app is opening with the project details filled in.';
       } catch (error) {
-        formStatus.textContent = 'Your email app is opening now. If needed, copy the details from the form.';
+        formStatus.textContent = 'Your email app is opening with the project details filled in.';
       }
 
       formStatus.style.display = 'block';
